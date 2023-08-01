@@ -3,6 +3,7 @@ const taskList = [];
 
 const todoListElement = document.querySelector("#todo-list");
 
+
 const TASK_STATUS = Object.freeze({
   todo: "todo",
   done: "done",
@@ -16,6 +17,8 @@ function taskFactory(text = "", status = TASK_STATUS.todo) {
   if (status !== TASK_STATUS.todo && status !== TASK_STATUS.done) {
     return;
   }
+
+    
 
   const taskObject = {
     id: `tasks-uuid-${taskIDCounter}`,
@@ -32,6 +35,9 @@ function renderTask(taskObject) {
   if (!taskObject || typeof taskObject !== "object") {
     return;
   }
+
+
+   
 
   const li = document.createElement("li");
   //افزودن کلاس هاس تیلویند بریا استایل دهی به لیست آیتم
@@ -62,6 +68,17 @@ function renderTask(taskObject) {
   return li;
 }
 //این تابع کل آبجت های ساخته شده که در آرایه پوش شده اند را یکی یکی به ال آی تبدیل می کند و در نهایت در یو ال قرار می دهد.
+
+function templateRender(){
+
+  const template=document.querySelector("template")
+  let cln=template.content.cloneNode(true);
+   cln.querySelector("p").innerHTML=taskObject.text;
+  
+  
+}
+
+
 function renderTasks() {
   
   todoListElement.innerHTML="";
@@ -98,13 +115,22 @@ const createTaskButton = createTaskForm.querySelector("button");
 
 function createTaskHandler() {
   const value = createTaskInput.value;
-  if (!value) {
-    return;
-  }
-  createTask(value);
+  templateRender()
+  validation();
   // باکس متن هردفعه پس از فشردن دکمه خالی شود
   createTaskInput.value = "";
 }
+function validation() {
+  if (createTaskInput.value === "") {
+    msg.innerHTML = " task can  not be blank!";
+    
+  }
+  else if (createTaskInput.value != ""){
+    msg.innerHTML = "";
+    createTask(createTaskInput.value)
+
+  }
+};
 
 createTaskButton.addEventListener("click", createTaskHandler);
 createTaskForm.addEventListener("keypress", function(event) {
