@@ -17,8 +17,10 @@
         <section id="app" class="shadow bg-white rounded-xl mx-auto w-1/2">
             <form  id="createtoDo" class="flex">
                 <input placeholder="enter your tasks..."type="text" name="todoItemText" id="todoItemText" class="rounded-xl bg-gray-100 p-l mr-2 grow">
+                
                 <button class="bg-blue-100 w-20 p-2 rounded-xl" type="button"><span class="fa fa-plus text-blue-500"></span></button>
             </form>
+            <p id="msg" class="text-red-500"></p>
                  <ul id="todo-list" class="mt-2">
                     <!-- <li class="rounded-x1 bg-gray-100 p-2 mt-1 flex justify-between">
                         <p>do some</p>
@@ -42,10 +44,23 @@
                         </div>
                         
                     </li> -->
+                    <template>
+                        <li class="rounded-x1 bg-gray-100 p-2 mt-1 flex justify-between">
+                            <p></p>
+                            <div>
+                                <span class="fa fa-minus-circle text-red-500"></span>
+            
+                                </span>
+                                <span class="fa fa-check-circle text-green-500"></span>
+            
+                            </div>
+                            
+                        </li></template>
                 </ul> 
         </section>
+        
     </main>
-    <script src="/index.js"></script>
+    <script src="index.js"></script>
     
 </body>
 
